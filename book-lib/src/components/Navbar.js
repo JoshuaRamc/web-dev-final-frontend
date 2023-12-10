@@ -6,8 +6,8 @@ import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import "../Styles/styles.css";
-
 import GitHubIcon from "@mui/icons-material/GitHub";
+
 function Navbar() {
   const navRef = useRef();
 
@@ -31,7 +31,7 @@ function Navbar() {
               Home
             </Button>
           </Link>
-          <Link>
+          <Link to = "/search">
             <Button
               variant="text"
               sx={{ color: "black" }}
