@@ -18,11 +18,13 @@ function Navbar() {
   return (
     <header>
       <div>
-        <MenuBookIcon fontSize="large" sx={{ color: "black" }} />
+        <Link to="/">
+          <MenuBookIcon fontSize="large" sx={{ color: "black" }} />
+        </Link>
       </div>
       <div>
         <nav ref={navRef}>
-          <Link to="/">
+          <Link to="/forums">
             <Button
               variant="text"
               sx={{ color: "black" }}
