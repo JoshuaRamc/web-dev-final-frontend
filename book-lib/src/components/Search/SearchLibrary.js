@@ -23,7 +23,6 @@ const SearchLibrary = () => {
 					<h1>Book Finder</h1>
 				</div>
 				<div className='row2'>
-					<h2>Find Your Book</h2>
 					<div className='search'>
 						<input
 							type='text'
