@@ -6,7 +6,7 @@ header {
 	align-items: center;
 	justify-content: space-evenly;
 	height: 80px;
-	background-color: var(--mainColor);
+	background-color: #ff9933;
 	color: var(--textColor);
 }
 
@@ -55,7 +55,7 @@ nav {
 		align-items: center;
 		justify-content: center;
 		gap: 1.5rem;
-		background-color: var(--mainColor);
+		background-color: #ff9933;
 		transition: 1s;
 	}
 
