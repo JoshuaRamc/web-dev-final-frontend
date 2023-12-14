@@ -18,7 +18,7 @@ function Navbar() {
   return (
     <header>
       <div>
-        <Link to="/">
+        <Link to="/home">
           <MenuBookIcon fontSize="large" sx={{ color: "black" }} />
         </Link>
       </div>
