@@ -2,22 +2,33 @@ import { useEffect, useContext } from "react";
 import React from "react";
 import BookLookup from "../../apis/BookLookup";
 import { BooksContext } from "../../apis/BooksContext";
+import { useNavigate } from "react-router-dom";
 
 const BookList = (props) => {
+  const navigate = useNavigate();
   const { books, setBooks } = useContext(BooksContext);
 
   const fetchData = async () => {
     try {
-      const res = await BookLookup.get("/findall");
+      const res = await BookLookup.get("/findall", {
+        params: {
+          limit: 1,
+        },
+      });
       setBooks(res.data);
     } catch (e) {
       console.log(e);
     }
   };
 
+  const handleBookSelect = (isbn) => {
+    navigate(`/book/${isbn}`);
+  };
+
   useEffect(() => {
     fetchData();
-  });
+    // eslint-disable-next-line
+  }, []);
   return (
     <>
       <div className="list-group">
@@ -35,7 +46,7 @@ const BookList = (props) => {
           <tbody>
             {books.map((book) => {
               return (
-                <tr>
+                <tr onClick={() => handleBookSelect(book.isbn)} key={book.isbn}>
                   <td>{book.title}</td>
                   <td>{book.authors}</td>
                   <td>{book.publication_date}</td>
