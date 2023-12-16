@@ -1,6 +1,5 @@
 import { useRef } from "react";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
-import BookIcon from "@mui/icons-material/Book";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import ManageSearchIcon from "@mui/icons-material/ManageSearch";
 import Button from "@mui/material/Button";
@@ -19,7 +18,7 @@ function Navbar() {
   return (
     <header>
       <div>
-        <Link to="/home">
+        <Link to="/">
           <MenuBookIcon fontSize="large" sx={{ color: "black" }} />
         </Link>
       </div>
@@ -32,15 +31,6 @@ function Navbar() {
               startIcon={<LibraryBooksIcon />}
             >
               Forums
-            </Button>
-          </Link>
-          <Link to="/library">
-            <Button
-              variant="text"
-              sx={{ color: "black" }}
-              startIcon={<BookIcon />}
-            >
-              Library
             </Button>
           </Link>
           <Link to="/search">

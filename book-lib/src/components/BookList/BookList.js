@@ -17,7 +17,8 @@ const BookList = (props) => {
 
   useEffect(() => {
     fetchData();
-  });
+    // eslint-disable-next-line
+  }, []);
   return (
     <>
       <div className="list-group">

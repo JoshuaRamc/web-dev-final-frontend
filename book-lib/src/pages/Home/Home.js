@@ -53,7 +53,7 @@ function Home() {
           }
 
           header {
-            background-color: #ff9933;
+            background-color: #33c5ff;
             color: black;
             padding: 20px;
             text-align: center;
@@ -128,7 +128,7 @@ function Home() {
           }
 
           footer {
-            background-color: #ff9933;
+            background-color: #33c5ff;
             color: black;
             text-align: center;
             padding: 20px;
