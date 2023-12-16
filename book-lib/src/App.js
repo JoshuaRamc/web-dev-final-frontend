@@ -1,6 +1,6 @@
 import "./index.css";
 import { Route, Routes } from "react-router-dom";
-import SearchBooks from "./components/Search/Search";
+import SearchLibrary from "./components/Search/SearchLibrary";
 import Navbar from "./components/Navbar/Navbar";
 import Forum from "./pages/Forum/Forum";
 import Conversation from "./components/Conversation/Conversation";
@@ -14,7 +14,7 @@ function App() {
       <Routes>
 		    <Route path="/home" element= {<Home/>} />
         <Route path="/forums" element={<Forum />} />
-        <Route path="/search" element={<SearchBooks />} />
+        <Route path="/search" element={<SearchLibrary />} />
         <Route path="/book/:isbn" element={<Conversation />} />
       </Routes>
     </BooksContextProvider>
