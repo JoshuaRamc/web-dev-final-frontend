@@ -12,7 +12,7 @@ function App() {
     <BooksContextProvider>
       <Navbar />
       <Routes>
-		    <Route path="/home" element= {<Home/>} />
+		    <Route path="/" element= {<Home/>} />
         <Route path="/forums" element={<Forum />} />
         <Route path="/search" element={<SearchLibrary />} />
         <Route path="/book/:isbn" element={<Conversation />} />
