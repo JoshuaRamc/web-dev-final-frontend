@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import SearchLibrary from "./components/Search/SearchLibrary";
 import Navbar from "./components/Navbar/Navbar";
 import Forum from "./pages/Forum/Forum";
-import Conversation from "./components/Conversation/Conversation";
+import Conversation from "./pages/Conversation/Conversation";
 import { BooksContextProvider } from "./apis/BooksContext";
 import Home from "./pages/Home/Home";
 
