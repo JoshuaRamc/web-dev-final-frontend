@@ -2,9 +2,11 @@ import BookList from "../../components/BookList/BookList";
 import ForumHeader from "../../components/ForumHeader/ForumHeader";
 function Forum() {
   return (
-    <div className="container">
-      <ForumHeader />
-      <BookList />
+    <div>
+      <div style={{ display: "flex", flexDirection: "column" }}>
+        <ForumHeader />
+        <BookList />
+      </div>
     </div>
   );
 }
