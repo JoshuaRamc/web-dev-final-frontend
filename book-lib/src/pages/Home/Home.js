@@ -1,13 +1,39 @@
-import React from 'react';
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   // Sample book data
+  const navigate = useNavigate();
+  const handleBookClick = async () => {
+    try {
+      navigate(`/forums`);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   const books = [
-    { title: 'Harry Potter and the Sorcerer Stone', author: 'J.K Rowling', imageUrl: '../Harry_Potter.jpg' },
-    { title: 'Fahrenheit 451', author: 'Ray Bradbury', imageUrl: '../farenheit.jpg' },
-    { title: 'To Kill a Mockingbird', author: 'Harper Lee', imageUrl: '../mockingbird.jpeg' },
-    { title: '1984', author: 'George Orwell', imageUrl: '../1984.jpg' },
-    { title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', imageUrl: '../great.jpg' },
+    {
+      title: "Harry Potter and the Sorcerer Stone",
+      author: "J.K Rowling",
+      imageUrl: "../Harry_Potter.jpg",
+    },
+    {
+      title: "Fahrenheit 451",
+      author: "Ray Bradbury",
+      imageUrl: "../farenheit.jpg",
+    },
+    {
+      title: "To Kill a Mockingbird",
+      author: "Harper Lee",
+      imageUrl: "../mockingbird.jpeg",
+    },
+    { title: "1984", author: "George Orwell", imageUrl: "../1984.jpg" },
+    {
+      title: "The Great Gatsby",
+      author: "F. Scott Fitzgerald",
+      imageUrl: "../great.jpg",
+    },
   ];
 
   return (
@@ -144,18 +170,25 @@ function Home() {
 
         <section id="hero-section">
           <h1>Welcome to the Book Haven</h1>
-          <p>Immerse yourself in a literary wonderland where the pages of your favorite books come alive through vibrant discussions and engaging conversations.</p>
+          <p>
+            Immerse yourself in a literary wonderland where the pages of your
+            favorite books come alive through vibrant discussions and engaging
+            conversations.
+          </p>
         </section>
 
         <section id="featured-books">
           <h2>Featured Books</h2>
 
           {/* Create book cards */}
-          <div className="book-container">
+          <div className="book-container" onClick={() => handleBookClick()}>
             {books.map((book, index) => (
               <div key={index} className="book-card">
                 <div className="book-card-overlay"></div>
-                <img src={book.imageUrl} alt={`${book.title} by ${book.author}`} />
+                <img
+                  src={book.imageUrl}
+                  alt={`${book.title} by ${book.author}`}
+                />
                 <div className="book-details">
                   <h3>{book.title}</h3>
                   <p>{book.author}</p>
@@ -167,7 +200,11 @@ function Home() {
 
         <section id="additional-content">
           <h2>Discover More!</h2>
-          <p>Explore our forums, join book discussions, and be part of a community passionate about literature. Your next literary adventure awaits!</p>
+          <p>
+            Explore our forums, join book discussions, and be part of a
+            community passionate about literature. Your next literary adventure
+            awaits!
+          </p>
         </section>
 
         <footer>

@@ -1,13 +1,18 @@
 import { useContext, useEffect } from "react";
+import Button from "@mui/material/Button";
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import { useParams } from "react-router-dom";
 import { BooksContext } from "../../apis/BooksContext";
 import BookLookup from "../../apis/BookLookup";
+import { useNavigate } from "react-router-dom";
+import EditIcon from "@mui/icons-material/Edit";
 import AddThread from "../../components/Thread/AddThread";
 
 function Conversation() {
   const { isbn } = useParams();
   const { selectedBook, setSelectedBook } = useContext(BooksContext);
   const { threads, setThreads } = useContext(BooksContext);
+  const navigate = useNavigate();
 
   const fetchData = async () => {
     try {
@@ -24,6 +29,28 @@ function Conversation() {
     }
   };
 
+  const handleDelete = async (id) => {
+    try {
+      const res = await BookLookup.delete(`/thread/${id}`);
+      setThreads(
+        threads.filter((thread) => {
+          return thread.id !== id;
+        })
+      );
+      console.log(res);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const handleEdit = async (id) => {
+    try {
+      navigate(`/edit/${id}`);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   useEffect(() => {
     fetchData();
     console.log(selectedBook);
@@ -33,6 +60,24 @@ function Conversation() {
 
   return (
     <div>
+      <div
+        style={{ display: "flex", justifyContent: "center", marginTop: "10px" }}
+      >
+        <h1>{selectedBook.title}</h1>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginTop: "10px",
+          fontSize: 14,
+          textAlign: "center",
+        }}
+      >
+        "{selectedBook.description}"
+      </div>
+
+      <AddThread />
       {selectedBook && (
         <>
           <div className="mt-3">
@@ -42,12 +87,13 @@ function Conversation() {
             >
               {threads.map((thread) => {
                 return (
-                  // <tr>
-                  //   <td>{thread.isbn_num}</td>
-                  // </tr>
                   <div
-                    className="card text-white bg-primary mb-3 mr-4"
-                    style={{ maxWidth: "30%", minWidth: "30%" }}
+                    className="card text-white mb-3 mr-4"
+                    style={{
+                      maxWidth: "30%",
+                      minWidth: "30%",
+                      backgroundColor: "MediumPurple",
+                    }}
                   >
                     <div className="card-header d-flex justify-content-between">
                       <span>{thread.name}</span>
@@ -56,12 +102,30 @@ function Conversation() {
                     <div className="card-body">
                       <p className="card-text">{thread.review}</p>
                     </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <Button
+                        variant="text"
+                        sx={{ color: "black" }}
+                        startIcon={<EditIcon />}
+                        onClick={() => handleEdit(thread.id)}
+                      ></Button>
+                      <Button
+                        variant="text"
+                        sx={{ color: "black" }}
+                        startIcon={<HighlightOffIcon />}
+                        onClick={() => handleDelete(thread.id)}
+                      ></Button>
+                    </div>
                   </div>
                 );
               })}
             </div>
           </div>
-          <AddThread />
         </>
       )}
     </div>

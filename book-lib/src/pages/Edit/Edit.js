@@ -1,46 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@mui/material";
-import { useState } from "react";
 import { useParams } from "react-router-dom";
 import BookLookup from "../../apis/BookLookup";
 
-const AddThread = () => {
-  const { isbn } = useParams();
-  const [name, setName] = useState("");
-  const [comment, setComment] = useState();
-  const [rating, setRating] = useState("1");
+function Edit() {
+  const { id } = useParams();
 
-  const handleThreadAdd = async (e) => {
-    e.preventDefault();
+  const handleEdit = async (e) => {
     try {
-      const newThread = await BookLookup.post(`/thread/create`, {
-        isbn_num: isbn,
-        name,
+      const res = await BookLookup.put(`/thread/${id}`, {
         review: comment,
-        rating,
+        rating: rating,
       });
-      console.log(newThread);
-      window.location.reload(false);
-    } catch (err) {
-      console.log(err);
+      console.log(res);
+    } catch (e) {
+      console.log(e);
     }
   };
 
+  const [rating, setRating] = useState("1");
+  const [comment, setComment] = useState("");
   return (
     <div className="mb-2" style={{ marginTop: "1rem" }}>
       <form action="">
         <div className="form-row">
-          <div className="form-group col-8">
-            <label htmlFor="name">Name</label>
-            <input
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              id="name"
-              placeholder="name"
-              type="text"
-              className="form-control"
-            />
-          </div>
           <div className="form-group col-4">
             <label htmlFor="rating">Rating</label>
             <select
@@ -70,20 +53,22 @@ const AddThread = () => {
             ></textarea>
             <Button
               type="submit"
-              onClick={handleThreadAdd}
+              //   onClick={handleThreadAdd}
               variant="contained"
               style={{
                 backgroundColor: "#7B68EE",
                 color: "white",
                 marginLeft: "10px",
               }}
+              onClick={() => handleEdit()}
             >
-              Add Thread
+              Confirm Edit
             </Button>
           </div>
         </div>
       </form>
     </div>
   );
-};
-export default AddThread;
+}
+
+export default Edit;
