@@ -1,9 +1,22 @@
 import React, { useState } from "react";
 import BookModel from "./BookModel";
+import { toggleShown } from "../../indexSlice";
+import { useSelector, useDispatch } from "react-redux";
+
 const BookCard = ({ book }) => {
+  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const [bookItem, setItem] = useState();
   console.log(book);
+
+  // eslint-disable-next-line
+  const isShown = useSelector((state) => state.index);
+
+  const handleClose = async () => {
+    setShow(false);
+    dispatch(toggleShown(false));
+  };
+
   return (
     <>
       {book.map((item) => {
@@ -16,6 +29,7 @@ const BookCard = ({ book }) => {
               <div
                 className="BookCard"
                 onClick={() => {
+                  dispatch(toggleShown(true));
                   setShow(true);
                   setItem(item);
                 }}
@@ -28,7 +42,7 @@ const BookCard = ({ book }) => {
               <BookModel
                 show={show}
                 item={bookItem}
-                onClose={() => setShow(false)}
+                onClose={() => handleClose()}
               />
             </>
           );
