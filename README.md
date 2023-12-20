@@ -23,7 +23,7 @@ Repository for frontend final project web dev.
     * For CREATE: https://github.com/JoshuaRamc/web-dev-final-frontend/blob/4e7664aeacc07d54238a286ee33a76167ac0b317/book-lib/src/components/Search/BookModel.js#L6-L93
     * For READ: https://github.com/JoshuaRamc/web-dev-final-frontend/blob/4e7664aeacc07d54238a286ee33a76167ac0b317/book-lib/src/components/BookList/BookList.js#L9-L92
     * For UPDATE: https://github.com/JoshuaRamc/web-dev-final-frontend/blob/4e7664aeacc07d54238a286ee33a76167ac0b317/book-lib/src/pages/Edit/Edit.js#L6-L74
-    * For DELETE (also includes EDIT): https://github.com/JoshuaRamc/web-dev-final-frontend/blob/4e7664aeacc07d54238a286ee33a76167ac0b317/book-lib/src/pages/Conversation/Conversation.js#L11C1-L135
+    * For DELETE: https://github.com/JoshuaRamc/web-dev-final-frontend/blob/44a4b50d4fd82f6e03dcf591b777c9dcab2e2782/book-lib/src/pages/Conversation/Conversation.js#L32-L121
 * Client-Side Routing (React Router)
   * Create 2 or more routes that display different componetns based on the URL that are accessible from the navbar/topbar
     * Route Creation: https://github.com/JoshuaRamc/web-dev-final-frontend/blob/4e7664aeacc07d54238a286ee33a76167ac0b317/book-lib/src/App.js#L11C1-L26
